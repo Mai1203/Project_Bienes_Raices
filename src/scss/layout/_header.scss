@@ -1,4 +1,21 @@
+.no-webp .inicio {
+  background-image: url(assets/img/header.jpg);
+}
+
+.webp .inicio {
+  background-image: url(assets/img/header.webp);
+}
+
 .header {
   background-color: $grisOscuro;
   padding: 1rem 0 3rem 0;
+
+  &.inicio {
+    background-position: center center;
+    background-size: cover;
+
+    @include tablet {
+      min-height: 70rem;
+    }
+  }
 }
