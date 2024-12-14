@@ -16,7 +16,7 @@ const webp = require("gulp-webp");
 const paths = {
   scss: "src/scss/**/*.scss",
   js: "src/js/**/*.js",
-  imagenes: "assets/img/**/*.{jpg,png,svg}",
+  imagenes: "src/img/**/*.{jpg,png,svg}",
 };
 
 function css() {

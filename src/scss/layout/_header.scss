@@ -1,20 +1,23 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
 .no-webp .inicio {
-  background-image: url(assets/img/header.jpg);
+  background-image: url('../img/header.jpg');
 }
 
 .webp .inicio {
-  background-image: url(assets/img/header.webp);
+  background-image: url('../img/header.webp');
 }
 
 .header {
-  background-color: $grisOscuro;
+  background-color: v.$grisOscuro;
   padding: 1rem 0 3rem 0;
 
   &.inicio {
     background-position: center center;
     background-size: cover;
 
-    @include tablet {
+    @include m.tablet {
       min-height: 70rem;
     }
   }
