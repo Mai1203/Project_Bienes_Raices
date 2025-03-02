@@ -6,6 +6,12 @@
 
   .contenedor-footer {
     padding-top: calc(v.$separacion / 2);
+    
+    .navegacion {
+      a:hover{
+        color: v.$verde;
+      }
+    }
   }
 
   .copyright {

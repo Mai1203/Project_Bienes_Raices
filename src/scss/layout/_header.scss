@@ -1,13 +1,14 @@
 @use '../base/variables' as v;
 @use '../base/mixins' as m;
 
-.no-webp .inicio {
-  background-image: url('../img/header.jpg');
+.inicio {
+  background-image: url('../../src/img/header.jpg');
+  height: 30vh;
 }
 
-.webp .inicio {
-  background-image: url('../img/header.webp');
-}
+// .webp .inicio {
+//   background-image: url('../../src/img/header.webp');
+// }
 
 .header {
   background-color: v.$grisOscuro;
@@ -20,5 +21,32 @@
     @include m.tablet {
       min-height: 70rem;
     }
+
+    .contenido-header {
+      @include m.tablet {
+        min-height: 70rem;
+      }
+    }
   }
+}
+
+.contenido-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  h1 {
+    text-align: left;
+    color: v.$blanco;
+    font-weight: bold;
+    line-height: 2;
+    max-width: 60rem;
+  }
+
+  .navegacion {
+    a:hover{
+      color: v.$verde;
+    }
+  }
+
 }

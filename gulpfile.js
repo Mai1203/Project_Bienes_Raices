@@ -8,7 +8,6 @@ const concat = require("gulp-concat");
 const terser = require("gulp-terser-js");
 const rename = require("gulp-rename");
 const imagemin = require("gulp-imagemin"); // Minificar imagenes
-const notify = require("gulp-notify");
 const cache = require("gulp-cache");
 const clean = require("gulp-clean");
 const webp = require("gulp-webp");
@@ -41,16 +40,24 @@ function javascript() {
     .pipe(dest("./build/js"));
 }
 
-function imagenes() {
+function Imagenes() {
   return src(paths.imagenes)
-    .pipe(cache(imagemin({ optimizationLevel: 3 })))
+    .pipe(
+      cache(
+        imagemin({
+          optimizationLevel: 3,
+          progressive: true,
+          interlaced: true,
+        })
+      )
+    )
     .pipe(dest("./build/img"))
     .on("end", () => console.log("✅ Proceso de imágenes completado."));
 }
 
 function versionWebp() {
   return src(paths.imagenes)
-    .pipe(webp())
+    .pipe(webp({ quality: 50 })) // Ajusta la calidad si es necesario
     .pipe(dest("./build/img"))
     .on("end", () => console.log("✅ Versión WebP creada."));
 }
@@ -58,7 +65,7 @@ function versionWebp() {
 function watchArchivos() {
   watch(paths.scss, css);
   watch(paths.js, javascript);
-  watch(paths.imagenes, imagenes);
+  watch(paths.imagenes, Imagenes);
   watch(paths.imagenes, versionWebp);
 }
 
@@ -67,7 +74,7 @@ exports.watchArchivos = watchArchivos;
 exports.default = parallel(
   css,
   javascript,
-  imagenes,
+  Imagenes,
   versionWebp,
   watchArchivos
 );
